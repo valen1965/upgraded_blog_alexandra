@@ -3,6 +3,17 @@
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('{{post.img_url}}')">
   <div class="container position-relative px-4 px-lg-5">
+
+
+{% for message in get_flashed_messages(): %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position-fixed;left:50%;
+    transform:translate(-50%,0); width:50%">
+        {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="post-heading">
@@ -30,7 +41,7 @@
           <!-- TODO: Editing posts-->
           <a
             class="btn btn-primary float-right"
-            href="TODO: Add code to edit_post here"
+            href="{{ url_for('edit_post', post_id=post.id) }}"
             >Edit Post</a
           >
         </div>
